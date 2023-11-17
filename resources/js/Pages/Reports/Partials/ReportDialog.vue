@@ -6,6 +6,7 @@
     const props = defineProps({
         show: Boolean,
         report: Object,
+        canSendEmail: Boolean,
     });
 
     const emit = defineEmits(['closeModal']);
@@ -17,6 +18,7 @@
         auxiliary: false,
         hours: null,
         remarks: null,
+        send_email: false,
     })
 
     const saveReport = () => {
@@ -39,8 +41,8 @@
             form.auxiliary = props.report.auxiliary;
             form.hours = props.report.hours;
             form.remarks = props.report.remarks;
+            form.send_email = props.report.send_email;
         }
-
     });
 </script>
 
@@ -77,7 +79,7 @@
                         <input v-model="form.auxiliary" type="checkbox" checked="checked" class="checkbox" :disabled="form.attend !== 'YES' || report.type !== 'PUBLISHER'" />
                         <span class="label-text ml-4">{{__('common.auxiliary')}}</span>
                     </label>
-                  </div>
+                </div>
 
                 <div class="form-control w-full">
                     <label for="hours" class="label">
@@ -91,6 +93,13 @@
                         <span class="label-text">{{__('page.reports.remarks')}}</span>
                     </label>
                     <input id="remarks" type="text" class="input input-bordered w-full" v-model="form.remarks" :disabled="!form.attend" />
+                </div>
+
+                <div v-if="canSendEmail" class="form-control self-end sm:col-span-2">
+                    <label class="label cursor-pointer justify-normal">
+                        <input v-model="form.send_email" type="checkbox" checked="checked" class="checkbox" :disabled="!report.publisher_email || report.publisher_status === 'INACTIVE'" />
+                        <span class="label-text ml-4">{{__('common.sendEmail')}}</span>
+                    </label>
                 </div>
             </div>
         </template>
