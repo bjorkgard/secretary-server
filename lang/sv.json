@@ -1,6 +1,7 @@
 {
     "common.auxiliary": "Hjälppionjär",
     "common.cancel": "Avbryt",
+    "common.login": "Logga in",
     "common.no": "Nej",
     "common.save": "Spara",
     "common.select": "Välj...",
@@ -40,5 +41,14 @@
     "page.reports.studies": "Bibelstudier",
     "page.reports.total": "Summa",
     "report.started_failed": "Månadsrapporten kunde inte skapas",
-    "report.started_successfully": "Månadsrapporten skapades"
+    "report.started_successfully": "Månadsrapporten skapades",
+    "common.email": "E-postadress",
+    "common.password": "Lösenord",
+    "common.rememberMe": "Kom ihåg mig",
+    "common.forgotPassword": "Glömt ditt lösenord?",
+    "common.resetPassword": "Återställ lösenordet",
+    "common.verifyEmail": "Verifiera e-postadressen",
+    "page.forgotPassword.description": "Glömt ditt lösenord? Inga problem. Låt oss bara veta din e-postadress så skickar vi dig en länk för återställning av lösenord som gör att du kan välja en ny.",
+    "page.forgotPassword.button": "Skicka länk för återställning av lösenord",
+    "common.confirmPassword": "Bekräfta lösenord"
 }

@@ -4,8 +4,6 @@ import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     email: String,
@@ -27,7 +25,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Reset Password" />
+    <Head :title="__('common.resetPassword')" />
 
     <AuthenticationCard>
         <template #logo>
@@ -36,12 +34,12 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
-                <TextInput
+                <InputLabel for="email" :value="__('common.email')" />
+                <input
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="input input-bordered mt-1 block w-full"
                     required
                     autofocus
                     autocomplete="username"
@@ -50,12 +48,12 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput
+                <InputLabel for="password" :value="__('common.password')" />
+                <input
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="input input-bordered mt-1 block w-full"
                     required
                     autocomplete="new-password"
                 />
@@ -63,12 +61,12 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-                <TextInput
+                <InputLabel for="password_confirmation" :value="__('common.confirmPassword')" />
+                <input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="input input-bordered mt-1 block w-full"
                     required
                     autocomplete="new-password"
                 />
@@ -76,9 +74,9 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset Password
-                </PrimaryButton>
+                <button type="submit" :class="{ 'opacity-25': form.processing }" class="btn btn-primary" :disabled="form.processing">
+                    {{__('common.resetPassword')}}
+                </button>
             </div>
         </form>
     </AuthenticationCard>

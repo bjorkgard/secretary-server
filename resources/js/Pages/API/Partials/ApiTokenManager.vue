@@ -3,17 +3,12 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import ActionMessage from '@/Components/ActionMessage.vue';
 import ActionSection from '@/Components/ActionSection.vue';
-import Checkbox from '@/Components/Checkbox.vue';
 import ConfirmationModal from '@/Components/ConfirmationModal.vue';
-import DangerButton from '@/Components/DangerButton.vue';
 import DialogModal from '@/Components/DialogModal.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
 import SectionBorder from '@/Components/SectionBorder.vue';
-import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     tokens: Array,
@@ -88,11 +83,11 @@ const deleteApiToken = () => {
                 <!-- Token Name -->
                 <div class="col-span-6 sm:col-span-4">
                     <InputLabel for="name" value="Name" />
-                    <TextInput
+                    <input
                         id="name"
                         v-model="createApiTokenForm.name"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="input input-bordered mt-1 block w-full"
                         autofocus
                     />
                     <InputError :message="createApiTokenForm.errors.name" class="mt-2" />
@@ -105,8 +100,8 @@ const deleteApiToken = () => {
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div v-for="permission in availablePermissions" :key="permission">
                             <label class="flex items-center">
-                                <Checkbox v-model:checked="createApiTokenForm.permissions" :value="permission" />
-                                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ permission }}</span>
+                                <input type="checkbox" v-model="createApiTokenForm.permissions" :value="permission" class="checkbox checkbox-secondary" />
+                                <span class="ms-2 text-md text-gray-600 dark:text-gray-400">{{ permission }}</span>
                             </label>
                         </div>
                     </div>
@@ -118,9 +113,9 @@ const deleteApiToken = () => {
                     Created.
                 </ActionMessage>
 
-                <PrimaryButton :class="{ 'opacity-25': createApiTokenForm.processing }" :disabled="createApiTokenForm.processing">
+                <button class="btn btn-primary" :class="{ 'opacity-25': createApiTokenForm.processing }" :disabled="createApiTokenForm.processing">
                     Create
-                </PrimaryButton>
+                </button>
             </template>
         </FormSection>
 
@@ -153,13 +148,13 @@ const deleteApiToken = () => {
 
                                     <button
                                         v-if="availablePermissions.length > 0"
-                                        class="cursor-pointer ms-6 text-sm text-gray-400 underline"
+                                        class="btn btn-link ms-6 text-sm text-gray-400"
                                         @click="manageApiTokenPermissions(token)"
                                     >
                                         Permissions
                                     </button>
 
-                                    <button class="cursor-pointer ms-6 text-sm text-red-500" @click="confirmApiTokenDeletion(token)">
+                                    <button class="btn btn-link ms-6 text-sm text-red-500" @click="confirmApiTokenDeletion(token)">
                                         Delete
                                     </button>
                                 </div>
@@ -187,9 +182,9 @@ const deleteApiToken = () => {
             </template>
 
             <template #footer>
-                <SecondaryButton @click="displayingToken = false">
+                <button class="btn btn-secondary" @click="displayingToken = false">
                     Close
-                </SecondaryButton>
+                </button>
             </template>
         </DialogModal>
 
@@ -203,7 +198,7 @@ const deleteApiToken = () => {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div v-for="permission in availablePermissions" :key="permission">
                         <label class="flex items-center">
-                            <Checkbox v-model:checked="updateApiTokenForm.permissions" :value="permission" />
+                            <input type="checkbox" class="checkbox checkbox-secondary" v-model="updateApiTokenForm.permissions" :value="permission" />
                             <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ permission }}</span>
                         </label>
                     </div>
@@ -211,18 +206,20 @@ const deleteApiToken = () => {
             </template>
 
             <template #footer>
-                <SecondaryButton @click="managingPermissionsFor = null">
+                <button class="btn btn-outline" @click="managingPermissionsFor = null">
                     Cancel
-                </SecondaryButton>
+                </button>
 
-                <PrimaryButton
-                    class="ms-3"
+
+                <button
+                type="submit"
+                    class="btn btn-primary ms-3"
                     :class="{ 'opacity-25': updateApiTokenForm.processing }"
                     :disabled="updateApiTokenForm.processing"
                     @click="updateApiToken"
                 >
                     Save
-                </PrimaryButton>
+                </button>
             </template>
         </DialogModal>
 
@@ -237,18 +234,18 @@ const deleteApiToken = () => {
             </template>
 
             <template #footer>
-                <SecondaryButton @click="apiTokenBeingDeleted = null">
+                <button class="btn btn-outline" @click="apiTokenBeingDeleted = null">
                     Cancel
-                </SecondaryButton>
+                </button>
 
-                <DangerButton
-                    class="ms-3"
+                <button
+                    class="btn btn-error ms-3"
                     :class="{ 'opacity-25': deleteApiTokenForm.processing }"
                     :disabled="deleteApiTokenForm.processing"
                     @click="deleteApiToken"
                 >
                     Delete
-                </DangerButton>
+                </button>
             </template>
         </ConfirmationModal>
     </div>

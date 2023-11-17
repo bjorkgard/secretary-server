@@ -18,6 +18,8 @@ class UserSeeder extends Seeder
             'email' => env('USER_EMAIL', 'namn.namnsson@example.com'),
             'password' => bcrypt(env('USER_PASSWORD', 'password')),
             'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

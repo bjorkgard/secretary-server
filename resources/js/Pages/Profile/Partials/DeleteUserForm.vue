@@ -2,11 +2,8 @@
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import ActionSection from '@/Components/ActionSection.vue';
-import DangerButton from '@/Components/DangerButton.vue';
 import DialogModal from '@/Components/DialogModal.vue';
 import InputError from '@/Components/InputError.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
@@ -53,9 +50,9 @@ const closeModal = () => {
             </div>
 
             <div class="mt-5">
-                <DangerButton @click="confirmUserDeletion">
+                <button class="btn btn-error" @click="confirmUserDeletion">
                     Delete Account
-                </DangerButton>
+                </button>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
@@ -68,11 +65,11 @@ const closeModal = () => {
                     Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
 
                     <div class="mt-4">
-                        <TextInput
+                        <input
                             ref="passwordInput"
                             v-model="form.password"
                             type="password"
-                            class="mt-1 block w-3/4"
+                            class="input input-bordered mt-1 block w-3/4"
                             placeholder="Password"
                             autocomplete="current-password"
                             @keyup.enter="deleteUser"
@@ -83,18 +80,18 @@ const closeModal = () => {
                 </template>
 
                 <template #footer>
-                    <SecondaryButton @click="closeModal">
+                    <button class="btn btn-outline" @click="closeModal">
                         Cancel
-                    </SecondaryButton>
+                    </button>
 
-                    <DangerButton
-                        class="ms-3"
+                    <button
+                        class="btn btn-error ms-3"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
                         Delete Account
-                    </DangerButton>
+                    </button>
                 </template>
             </DialogModal>
         </template>
