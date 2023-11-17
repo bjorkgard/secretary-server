@@ -20,6 +20,7 @@ class ReportController extends Controller
             'auxiliary' => $request->get('auxiliary'),
             'hours' => $request->get('hours'),
             'remarks' => $request->get('remarks'),
+            'send_email' => $request->get('send_email'),
             'has_been_updated' => true,
         ]);
 

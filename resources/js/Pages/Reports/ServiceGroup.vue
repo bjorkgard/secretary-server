@@ -1,7 +1,8 @@
 <script setup>
     import { ref } from 'vue';
     import { Head, useForm } from '@inertiajs/vue3';
-    import { CheckIcon, PaperAirplaneIcon, XMarkIcon } from '@heroicons/vue/24/solid'
+    import { CheckIcon, XMarkIcon } from '@heroicons/vue/24/solid'
+    import { EnvelopeIcon, PaperAirplaneIcon } from '@heroicons/vue/20/solid'
     import ReportDialog from '@/Pages/Reports/Partials/ReportDialog.vue';
 
     const showingReportDialog = ref(false);
@@ -62,7 +63,19 @@
             <div class="flex justify-between">
                 <div>
                     <h1 class="font-extrabold text-xl">{{__('page.reports.headline')}}</h1>
-                    <p>{{__('page.reports.description')}}</p>
+                    <p>
+                        <span>
+                            {{__('page.reports.description1')}}
+                        </span>
+                        <span v-if="congregation.send_publisher_reports">
+                            <br/>
+                            {{__('page.reports.description2')}}
+                        </span>
+                        <span v-if="congregation.send_publisher_reports">
+                            <br/>
+                            {{__('page.reports.description3')}}
+                        </span>
+                    </p>
                 </div>
 
             </div>
@@ -82,10 +95,15 @@
                     <tbody>
                         <tr v-for="report in serviceGroup.reports" :class="{'bg-blue-200 dark:bg-sky-800':report.publisher_status === 'INACTIVE'}" class="cursor-pointer dark:border-b dark:border-sky-900" @click="showReportDialog(report.id)">
                             <th class="flex justify-between" :class="{'text-blue-500 bg-blue-100 dark:bg-sky-900 dark:text-sky-100':report.publisher_status === 'INACTIVE'}">
-                                <span>
-                                    {{report.publisher_name}}
-                                </span>
-                                <div className="tooltip tooltip-right" :data-tip="__('page.reports.sendEmail')">
+                                <div class="flex">
+                                    <div v-if="congregation.send_publisher_reports" class="tooltip tooltip-right" :data-tip="__('page.reports.hasSendEmail')">
+                                        <EnvelopeIcon v-if="report.send_email" @click.stop.prevent="sendEmail(report.id)" class="h-5 w-5 text-blue-500 mr-2" />
+                                    </div>
+                                    <span>
+                                        {{report.publisher_name}}
+                                    </span>
+                                </div>
+                                <div v-if="congregation.send_publisher_reports" class="tooltip tooltip-right" :data-tip="__('page.reports.sendEmail')">
                                     <PaperAirplaneIcon v-if="report.publisher_email && report.publisher_status !== 'INACTIVE'" @click.stop.prevent="sendEmail(report.id)" class="h-5 w-5 text-blue-500" />
                                 </div>
                             </th>
@@ -113,7 +131,7 @@
             </div>
         </div>
 
-        <ReportDialog :show="showingReportDialog" :report="activeReport" @closeModal="onCloseModal" />
+        <ReportDialog :canSendEmail="congregation.send_publisher_reports" :show="showingReportDialog" :report="activeReport" @closeModal="onCloseModal" />
     </div>
 </template>
 
