@@ -61,4 +61,9 @@ class ReportController extends Controller
     {
         Report::whereIn('id', $request->get('ids'))->update(['has_been_updated' => false]);
     }
+
+    public function sendEmail(Report $report)
+    {
+        $report->update(['email_status' => 'WAITING']);
+    }
 }

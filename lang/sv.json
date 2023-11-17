@@ -33,5 +33,9 @@
     "report.started_successfully": "Månadsrapporten skapades",
     "page.reports.publisher.title": "Personlig tjänsterapport",
     "common.send": "Skicka",
-    "page.reports.form.successfull": "Tack! Din rapport har blivit sparad."
+    "page.reports.form.successfull": "Tack! Din rapport har blivit sparad.",
+    "page.reports.sendEmail": "Skicka nytt rapportformulär till förkunnaren",
+    "page.reports.emailSent": "E-postmeddelandet kommer att skickas inom kort",
+    "page.reports.emailNotSent": "Det gick inte att skicka e-postmeddelandet"
+
 }
