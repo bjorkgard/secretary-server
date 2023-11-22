@@ -26,7 +26,15 @@ class SendPublisherReport
         $message = (new PublisherReport($event->report))->onQueue('emails');
 
         if ($event->report->publisher_email) {
-            Mail::to($event->report->publisher_email)->locale($event->report->locale)->queue($message);
+            $name = array_map('trim', explode(',', $event->report->publisher_name));
+            $to = [
+                [
+                    'email' => $event->report->publisher_email,
+                    'name' => $name[1] . ' ' . $name[0],
+                ],
+            ];
+
+            Mail::to($to)->locale($event->report->locale)->queue($message);
         }
     }
 }
