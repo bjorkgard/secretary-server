@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('telescope:prune')->daily();
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
-        $schedule->command('app:send-report-mail-for-service-group')->everyFiveMinutes();
+        $schedule->command('app:send-report-mail-for-service-group')->everyTenMinutes();
         $schedule->command('app:send-report-mail-for-publisher')->everyFiveMinutes();
     }
 
