@@ -20,7 +20,7 @@ class SendReportMailForServiceGroup extends Command
      *
      * @var string
      */
-    protected $description = 'Sending report mail for service groups with status WAITING';
+    protected $description = 'Sending report mail for service groups with status WAITING.';
 
     /**
      * Execute the console command.

@@ -20,7 +20,7 @@ class SendReportMailForPublisher extends Command
      *
      * @var string
      */
-    protected $description = 'Sending report mail for publishers with status WAITING';
+    protected $description = 'Sending report mail for publishers with status WAITING.';
 
     /**
      * Execute the console command.
