@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('app:send-report-mail-for-service-group')->everyTenMinutes();
         $schedule->command('app:send-report-mail-for-publisher')->everyFiveMinutes();
+        $schedule->command('app:delete-old-reports')->monthlyOn(27);
     }
 
     /**
