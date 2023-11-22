@@ -10,13 +10,35 @@ class ServiceGroupController extends Controller
     const EMAIL_STATUS_WAITING = 'WAITING';
     const EMAIL_STATUS_NONE = 'NONE';
 
+    public function close(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'identifier' => 'required',
+            ]);
+
+            $identifier = $validatedData['identifier'];
+
+            ServiceGroup::where('identifier', $identifier)->delete();
+
+            return response()->json([
+                'message' => __('report.closed_successfully'),
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => __('report.close_failed'),
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function start(Request $request)
     {
         try {
             $validatedData = $request->validate([
                 'identifier' => 'required',
                 'locale' => 'required',
-                'publishers' => 'required|array',
+                'publishers' => 'array',
                 'serviceGroups' => 'required|array',
                 'serviceMonth' => 'required|array',
             ]);
