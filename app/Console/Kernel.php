@@ -15,8 +15,12 @@ class Kernel extends ConsoleKernel
         $schedule->command('telescope:prune')->daily()->environments(['local']);
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
-        $schedule->command('app:send-report-mail-for-service-group')->everyTenMinutes();
-        $schedule->command('app:send-report-mail-for-publisher')->everyFiveMinutes();
+        $schedule->command('app:send-report-mail-for-service-group')->environments(['local'])->everyTwoMinutes();
+        $schedule->command('app:send-report-mail-for-publisher')->environments(['local'])->everyMinute();
+
+        $schedule->command('app:send-report-mail-for-service-group')->environments(['stage'])->everyTenMinutes()->thenPing('http://beats.envoyer.io/heartbeat/TETDSUJhD628m9h');
+        $schedule->command('app:send-report-mail-for-publisher')->environments(['stage'])->everyFiveMinutes();
+
         $schedule->command('app:delete-old-reports')->monthlyOn(27);
     }
 
