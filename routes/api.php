@@ -3,6 +3,7 @@
 use App\Http\Controllers\CongregationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceGroupController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/register', [UserController::class, 'upsert'])->name('upsert.user');
+
     Route::post('/congregation', [CongregationController::class, 'upsert'])->name('upsert.congregation');
     Route::delete('/congregation/{identifier}', [CongregationController::class, 'delete'])->name('delete.congregation');
 
