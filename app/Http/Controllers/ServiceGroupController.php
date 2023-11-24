@@ -63,6 +63,7 @@ class ServiceGroupController extends Controller
                 $SG = ServiceGroup::create([
                     'identifier' => $identifier,
                     'locale' => $locale,
+                    'month' => $serviceMonth['name'],
                     'service_group_identifier' => $serviceGroup['_id'],
                     'name' => $serviceGroup['name'],
                     'responsible_email' => $responsible ? $responsible['email'] : null,

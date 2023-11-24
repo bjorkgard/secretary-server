@@ -29,7 +29,7 @@ class PublisherReport extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('emails.reports.publisherSubject'),
+            subject: __('emails.reports.publisherSubject', ['month' => __('month.' . $this->report->name)]),
             tags: ['report', 'publisher'],
             metadata: ['service_group_identifier' => $this->report->identifier],
         );
@@ -40,6 +40,7 @@ class PublisherReport extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
+        $explodedName = explode(', ', $this->report->publisher_name);
         return new Content(
             markdown: 'emails.reports.publisher',
             with: [
@@ -48,7 +49,8 @@ class PublisherReport extends Mailable implements ShouldQueue
                     now()->addDays(20),
                     ['locale' => $this->report->locale, 'report' => $this->report->identifier]
                 ),
-                'name' => $this->report->publisher_name,
+                'name' => $explodedName[1] . ' ' . $explodedName[0],
+                'month' => __('month.' . $this->report->name),
             ]
         );
     }

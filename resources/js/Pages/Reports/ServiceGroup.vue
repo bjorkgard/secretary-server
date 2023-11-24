@@ -101,6 +101,7 @@
                                     </div>
                                     <span>
                                         {{report.publisher_name}}
+                                        <div v-if="report.name !== serviceGroup.month" class="text-xs italic -mt-3"><br/>{{__(`month.${report.name}`)}}</div>
                                     </span>
                                 </div>
                                 <div v-if="congregation.send_publisher_reports" class="tooltip tooltip-right" :data-tip="__('page.reports.sendEmail')">
