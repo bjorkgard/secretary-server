@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('telescope:prune')->daily();
+        $schedule->command('telescope:prune')->daily()->environments(['local']);
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
         $schedule->command('app:send-report-mail-for-service-group')->everyTenMinutes();
