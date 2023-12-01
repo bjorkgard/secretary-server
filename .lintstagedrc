@@ -1,0 +1,5 @@
+{
+    "*.{json, js, jsx, ts, tsx, vue}": [
+        "eslint --quiet --fix"
+    ]
+}

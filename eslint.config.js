@@ -2,18 +2,18 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   stylistic: true,
-  rules: {
+  rules:     {
     'style/key-spacing': ['error', {
-        multiLine: {
-          beforeColon: false,
-          afterColon: true,
-        },
-        align: {
-          beforeColon: false,
-          afterColon: true,
-          on: 'value',
-        },
-      }],
+      multiLine: {
+        beforeColon: false,
+        afterColon:  true,
+      },
+      align: {
+        beforeColon: false,
+        afterColon:  true,
+        on:          'value',
+      },
+    }],
   },
   ignores: [
     '.github/**',
