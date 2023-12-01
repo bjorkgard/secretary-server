@@ -3,11 +3,11 @@ import { computed } from 'vue'
 
 const props = defineProps({
   checked: {
-    type: [Array, Boolean],
+    type:    [Array, Boolean],
     default: false,
   },
   value: {
-    type: String,
+    type:    String,
     default: null,
   },
 })

@@ -5,15 +5,15 @@ import InputError from './InputError.vue'
 
 defineProps({
   title: {
-    type: String,
+    type:    String,
     default: 'Confirm Password',
   },
   content: {
-    type: String,
+    type:    String,
     default: 'For your security, please confirm your password to continue.',
   },
   button: {
-    type: String,
+    type:    String,
     default: 'Confirm',
   },
 })
@@ -23,8 +23,8 @@ const emit = defineEmits(['confirmed'])
 const confirmingPassword = ref(false)
 
 const form = reactive({
-  password: '',
-  error: '',
+  password:   '',
+  error:      '',
   processing: false,
 })
 

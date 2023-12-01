@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   type: {
-    type: String,
+    type:    String,
     default: 'button',
   },
 })

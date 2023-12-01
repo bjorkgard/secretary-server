@@ -3,15 +3,15 @@ import Modal from './Modal.vue'
 
 defineProps({
   show: {
-    type: Boolean,
+    type:    Boolean,
     default: false,
   },
   maxWidth: {
-    type: String,
+    type:    String,
     default: '2xl',
   },
   closeable: {
-    type: Boolean,
+    type:    Boolean,
     default: true,
   },
 })

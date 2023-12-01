@@ -10,17 +10,17 @@ const passwordInput = ref(null)
 const currentPasswordInput = ref(null)
 
 const form = useForm({
-  current_password: '',
-  password: '',
+  current_password:      '',
+  password:              '',
   password_confirmation: '',
 })
 
 function updatePassword() {
   form.put(route('user-password.update'), {
-    errorBag: 'updatePassword',
+    errorBag:       'updatePassword',
     preserveScroll: true,
-    onSuccess: () => form.reset(),
-    onError: () => {
+    onSuccess:      () => form.reset(),
+    onError:        () => {
       if (form.errors.password) {
         form.reset('password', 'password_confirmation')
         passwordInput.value.focus()

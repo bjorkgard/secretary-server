@@ -3,15 +3,15 @@ import { computed, onMounted, onUnmounted, watch } from 'vue'
 
 const props = defineProps({
   show: {
-    type: Boolean,
+    type:    Boolean,
     default: false,
   },
   maxWidth: {
-    type: String,
+    type:    String,
     default: '2xl',
   },
   closeable: {
-    type: Boolean,
+    type:    Boolean,
     default: true,
   },
 })
@@ -45,10 +45,10 @@ onUnmounted(() => {
 
 const maxWidthClass = computed(() => {
   return {
-    'sm': 'sm:max-w-sm',
-    'md': 'sm:max-w-md',
-    'lg': 'sm:max-w-lg',
-    'xl': 'sm:max-w-xl',
+    'sm':  'sm:max-w-sm',
+    'md':  'sm:max-w-md',
+    'lg':  'sm:max-w-lg',
+    'xl':  'sm:max-w-xl',
     '2xl': 'sm:max-w-2xl',
   }[props.maxWidth]
 })

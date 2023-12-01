@@ -38,7 +38,7 @@ function enableTwoFactorAuthentication() {
 
   router.post(route('two-factor.enable'), {}, {
     preserveScroll: true,
-    onSuccess: () => Promise.all([
+    onSuccess:      () => Promise.all([
       showQrCode(),
       showSetupKey(),
       showRecoveryCodes(),
@@ -70,10 +70,10 @@ function showRecoveryCodes() {
 
 function confirmTwoFactorAuthentication() {
   confirmationForm.post(route('two-factor.confirm'), {
-    errorBag: 'confirmTwoFactorAuthentication',
+    errorBag:       'confirmTwoFactorAuthentication',
     preserveScroll: true,
-    preserveState: true,
-    onSuccess: () => {
+    preserveState:  true,
+    onSuccess:      () => {
       confirming.value = false
       qrCode.value = null
       setupKey.value = null
@@ -92,7 +92,7 @@ function disableTwoFactorAuthentication() {
 
   router.delete(route('two-factor.disable'), {
     preserveScroll: true,
-    onSuccess: () => {
+    onSuccess:      () => {
       disabling.value = false
       confirming.value = false
     },

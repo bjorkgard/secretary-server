@@ -4,27 +4,27 @@ import { useForm } from '@inertiajs/vue3'
 import DialogModal from '@/Components/DialogModal.vue'
 
 const props = defineProps({
-  show: Boolean,
-  report: Object,
+  show:         Boolean,
+  report:       Object,
   canSendEmail: Boolean,
 })
 
 const emit = defineEmits(['closeModal'])
 
 const form = useForm({
-  id: null,
-  attend: null,
-  studies: null,
-  auxiliary: false,
-  hours: null,
-  remarks: null,
+  id:         null,
+  attend:     null,
+  studies:    null,
+  auxiliary:  false,
+  hours:      null,
+  remarks:    null,
   send_email: false,
 })
 
 function saveReport() {
   form.put(route('report.update', { id: form.id }), {
     preserveScroll: true,
-    onSuccess: () => closeModal(),
+    onSuccess:      () => closeModal(),
   })
 }
 

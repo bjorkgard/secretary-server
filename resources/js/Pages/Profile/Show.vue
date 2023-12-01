@@ -9,7 +9,7 @@ import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfile
 
 defineProps({
   confirmsTwoFactorAuthentication: Boolean,
-  sessions: Array,
+  sessions:                        Array,
 })
 </script>
 

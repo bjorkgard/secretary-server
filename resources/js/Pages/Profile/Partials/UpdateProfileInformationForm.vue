@@ -12,9 +12,9 @@ const props = defineProps({
 
 const form = useForm({
   _method: 'PUT',
-  name: props.user.name,
-  email: props.user.email,
-  photo: null,
+  name:    props.user.name,
+  email:   props.user.email,
+  photo:   null,
 })
 
 const verificationLinkSent = ref(null)
@@ -26,9 +26,9 @@ function updateProfileInformation() {
     form.photo = photoInput.value.files[0]
 
   form.post(route('user-profile-information.update'), {
-    errorBag: 'updateProfileInformation',
+    errorBag:       'updateProfileInformation',
     preserveScroll: true,
-    onSuccess: () => clearPhotoFileInput(),
+    onSuccess:      () => clearPhotoFileInput(),
   })
 }
 
@@ -58,7 +58,7 @@ function updatePhotoPreview() {
 function deletePhoto() {
   router.delete(route('current-user-photo.destroy'), {
     preserveScroll: true,
-    onSuccess: () => {
+    onSuccess:      () => {
       photoPreview.value = null
       clearPhotoFileInput()
     },

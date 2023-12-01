@@ -21,9 +21,9 @@ function confirmUserDeletion() {
 function deleteUser() {
   form.delete(route('current-user.destroy'), {
     preserveScroll: true,
-    onSuccess: () => closeModal(),
-    onError: () => passwordInput.value.focus(),
-    onFinish: () => form.reset(),
+    onSuccess:      () => closeModal(),
+    onError:        () => passwordInput.value.focus(),
+    onFinish:       () => form.reset(),
   })
 }
 
