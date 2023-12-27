@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53ba63badaf7c69cf255d04e2aa41c6f",
+    "content-hash": "0ea33c9e02891dc938285733283da490",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2494,6 +2494,60 @@
                 }
             ],
             "time": "2023-12-11T18:04:00+00:00"
+        },
+        {
+            "name": "maantje/pulse-database",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maantje/pulse-database.git",
+                "reference": "ec5408a4357923294412d3d12dd86951e19ec60f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maantje/pulse-database/zipball/ec5408a4357923294412d3d12dd86951e19ec60f",
+                "reference": "ec5408a4357923294412d3d12dd86951e19ec60f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "*",
+                "laravel/pulse": "^1.0.0@beta",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5.0",
+                "orchestra/testbench": "^8",
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Maantje\\Pulse\\Database\\DatabaseServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Maantje\\Pulse\\Database\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jamie Schouten",
+                    "email": "j4mie@hey.com"
+                }
+            ],
+            "description": "A Laravel Pulse card for database status",
+            "support": {
+                "issues": "https://github.com/maantje/pulse-database/issues",
+                "source": "https://github.com/maantje/pulse-database/tree/v0.1.0"
+            },
+            "time": "2023-12-10T21:55:46+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -9322,5 +9376,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
