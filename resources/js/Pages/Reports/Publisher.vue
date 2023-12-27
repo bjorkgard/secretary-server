@@ -9,12 +9,13 @@ const props = defineProps({
 const showToast = ref(false)
 
 const form = useForm({
-  id:        props.report.id,
-  attend:    props.report.has_been_in_service ? 'YES' : props.report.has_not_been_in_service ? 'NO' : null,
-  studies:   props.report.studies,
-  auxiliary: props.report.auxiliary,
-  hours:     props.report.hours,
-  remarks:   props.report.remarks,
+  id:         props.report.id,
+  attend:     props.report.has_been_in_service ? 'YES' : props.report.has_not_been_in_service ? 'NO' : null,
+  studies:    props.report.studies,
+  auxiliary:  props.report.auxiliary,
+  hours:      props.report.hours,
+  remarks:    props.report.remarks,
+  send_email: props.report.send_email,
 })
 
 function showSuccessToast() {
