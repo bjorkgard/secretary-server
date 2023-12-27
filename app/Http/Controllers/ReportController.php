@@ -23,8 +23,6 @@ class ReportController extends Controller
             'send_email' => $request->get('send_email'),
             'has_been_updated' => true,
         ]);
-
-        Log::info('Report has been updated', $report->toArray());
     }
 
     public function send_reports()
