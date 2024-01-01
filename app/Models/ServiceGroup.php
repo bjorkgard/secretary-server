@@ -23,7 +23,7 @@ class ServiceGroup extends Model
         'assistant_email',
         'email_status',
         'locale',
-        'name'
+        'month',
     ];
 
     /**
