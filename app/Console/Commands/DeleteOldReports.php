@@ -12,7 +12,7 @@ class DeleteOldReports extends Command
      *
      * @var string
      */
-    protected $signature = 'app:delete-old-reports';
+    protected $signature = 'secretary:delete-old-reports';
 
     /**
      * The console command description.

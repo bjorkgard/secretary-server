@@ -13,7 +13,7 @@ class SendReportMailForPublisher extends Command
      *
      * @var string
      */
-    protected $signature = 'app:send-report-mail-for-publisher';
+    protected $signature = 'secretary:send-report-mail-for-publisher';
 
     /**
      * The console command description.

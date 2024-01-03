@@ -13,7 +13,7 @@ class SendReportMailForServiceGroup extends Command
      *
      * @var string
      */
-    protected $signature = 'app:send-report-mail-for-service-group';
+    protected $signature = 'secretary:send-report-mail-for-service-group';
 
     /**
      * The console command description.
