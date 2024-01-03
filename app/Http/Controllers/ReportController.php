@@ -34,6 +34,22 @@ class ReportController extends Controller
             ->update(['email_status' => 'WAITING']);
     }
 
+    public function updateReport(Request $request)
+    {
+        Log::info($request->all());
+        $report = Report::where('identifier', $request->get('identifier'))->firstOrFail();
+
+        Log::info($report);
+        $report->update([
+            'has_been_in_service' => $request->get('hasBeenInService'),
+            'has_not_been_in_service' => $request->get('hasNotBeenInService'),
+            'studies' => $request->get('studies'),
+            'auxiliary' => $request->get('auxiliary'),
+            'hours' => $request->get('hours'),
+            'remarks' => $request->get('remarks'),
+        ]);
+    }
+
     public function show(string $locale, string $identifier)
     {
         $report = Report::where('identifier', $identifier)->firstOrFail();
