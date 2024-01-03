@@ -81,15 +81,25 @@ function onCloseModal() {
       </div>
 
       <div class="h-full mt-4">
-        <table class="table table-lg table-pin-rows table-pin-cols">
+        <table class="table table-sm sm:table-lg table-pin-rows table-pin-cols">
           <thead>
             <tr class="dark:border-b dark:border-sky-900">
               <th />
-              <td>{{ __('page.reports.attend') }}</td>
-              <td>{{ __('page.reports.studies') }}</td>
-              <td>{{ __('page.reports.auxiliary') }}</td>
-              <td>{{ __('page.reports.hours') }}</td>
-              <td>{{ __('page.reports.remarks') }}</td>
+              <td>
+                {{ __('page.reports.attend') }}
+              </td>
+              <td class="invisible sm:visible">
+                {{ __('page.reports.studies') }}
+              </td>
+              <td class="invisible sm:visible">
+                {{ __('page.reports.auxiliary') }}
+              </td>
+              <td class="invisible sm:visible">
+                {{ __('page.reports.hours') }}
+              </td>
+              <td class="invisible sm:visible">
+                {{ __('page.reports.remarks') }}
+              </td>
             </tr>
           </thead>
           <tbody>
@@ -112,20 +122,34 @@ function onCloseModal() {
                 <CheckIcon v-if="report.has_been_in_service" class="h-6 w-6 text-green-500" />
                 <XMarkIcon v-if="report.has_not_been_in_service" class="h-6 w-6 text-red-500" />
               </td>
-              <td>{{ report.studies }}</td>
-              <td><CheckIcon v-if="report.auxiliary" class="h-6 w-6 text-green-500" /></td>
-              <td>{{ report.hours }}</td>
-              <td>{{ report.remarks }}</td>
+              <td class="invisible sm:visible">
+                {{ report.studies }}
+              </td>
+              <td class="invisible sm:visible">
+                <CheckIcon v-if="report.auxiliary" class="h-6 w-6 text-green-500" />
+              </td>
+              <td class="invisible sm:visible">
+                {{ report.hours }}
+              </td>
+              <td class="invisible sm:visible">
+                {{ report.remarks }}
+              </td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <th>{{ __('page.reports.total') }}</th>
               <td>{{ serviceGroup.reports.reduce((a, b) => a + b.has_been_in_service, 0) }}</td>
-              <td>{{ serviceGroup.reports.reduce((a, b) => a + b.studies, 0) }}</td>
-              <td>{{ serviceGroup.reports.reduce((a, b) => a + b.auxiliary, 0) }}</td>
-              <td>{{ serviceGroup.reports.reduce((a, b) => a + b.hours, 0) }}</td>
-              <td />
+              <td class="invisible sm:visible">
+                {{ serviceGroup.reports.reduce((a, b) => a + b.studies, 0) }}
+              </td>
+              <td class="invisible sm:visible">
+                {{ serviceGroup.reports.reduce((a, b) => a + b.auxiliary, 0) }}
+              </td>
+              <td class="invisible sm:visible">
+                {{ serviceGroup.reports.reduce((a, b) => a + b.hours, 0) }}
+              </td>
+              <td class="invisible sm:visible" />
             </tr>
           </tfoot>
         </table>
