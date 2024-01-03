@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Events\PublisherReportEvent;
 use App\Events\ServiceGroupReportsEvent;
+use App\Events\PublisherReportedEvent;
 use App\Listeners\MarkReportMailProcessing;
 use App\Listeners\MarkReportMailSent;
 use App\Listeners\MarkServiceGroupMailProcessing;
 use App\Listeners\MarkServiceGroupMailSent;
 use App\Listeners\SendPublisherReport;
+use App\Listeners\SendReportResponse;
 use App\Listeners\SendServiceGroupReport;
 use App\Listeners\SendServiceGroupReportAssistant;
 use Illuminate\Auth\Events\Registered;
@@ -37,6 +39,9 @@ class EventServiceProvider extends ServiceProvider
             MarkReportMailProcessing::class,
             SendPublisherReport::class,
             MarkReportMailSent::class,
+        ],
+        PublisherReportedEvent::class => [
+            SendReportResponse::class,
         ],
     ];
 
