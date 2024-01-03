@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/report', [ServiceGroupController::class, 'start'])->name('report.start');
     Route::post('/delete_report', [ServiceGroupController::class, 'close'])->name('report.close');
     Route::post('/send_reports', [ReportController::class, 'send_reports'])->name('report.send');
-    Route::get('/reports/{identifier}', [ReportController::class, 'getUpdates'])->name('report.get-updates');
+    Route::put('/reports/update', [ReportController::class, 'updateReport'])->name('report.update');
     Route::post('/reports/reset-updated', [ReportController::class, 'resetUpdated'])->name('report.reset-updated');
+    Route::get('/reports/{identifier}', [ReportController::class, 'getUpdates'])->name('report.get-updates');
 });
