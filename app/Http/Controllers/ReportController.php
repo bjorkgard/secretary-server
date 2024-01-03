@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PublisherReportedEvent;
 use App\Http\Requests\ReportRequest;
 use App\Models\Report;
 use App\Models\ServiceGroup;
@@ -25,6 +26,23 @@ class ReportController extends Controller
         ]);
     }
 
+    public function updatePublisher(ReportRequest $request, Report $report)
+    {
+        $report->update([
+            'has_been_in_service' => $request->get('attend') === 'YES' ? true : false,
+            'has_not_been_in_service' => $request->get('attend') === 'NO' ? true : false,
+            'studies' => $request->get('studies'),
+            'auxiliary' => $request->get('auxiliary'),
+            'hours' => $request->get('hours'),
+            'remarks' => $request->get('remarks'),
+            'send_email' => $request->get('send_email'),
+            'has_been_updated' => true,
+        ]);
+
+        // send response to service group
+        PublisherReportedEvent::dispatch($report);
+    }
+
     public function send_reports()
     {
         Report::where('send_email', true)
@@ -36,10 +54,8 @@ class ReportController extends Controller
 
     public function updateReport(Request $request)
     {
-        Log::info($request->all());
         $report = Report::where('identifier', $request->get('identifier'))->firstOrFail();
 
-        Log::info($report);
         $report->update([
             'has_been_in_service' => $request->get('hasBeenInService'),
             'has_not_been_in_service' => $request->get('hasNotBeenInService'),
