@@ -30,16 +30,18 @@ class SendReminder extends Command
     {
         $serviceGroups = ServiceGroup::where('responsible_email', '!=', null)
             ->orWhere('assistant_email', '!=', null)
-            ->whereHas('reports', function( Builder $query){
+            ->withCount(['reports' => function( Builder $query){
                 return $query->where('has_been_in_service', false)
                     ->where('has_not_been_in_service', false);
-            })
+            }])
             ->with('reports')
             ->get();
 
 
         foreach ($serviceGroups as $serviceGroup) {
-            event(new ServiceGroupReminderEvent($serviceGroup));
+            if($serviceGroup->reports_count > 0){
+                event(new ServiceGroupReminderEvent($serviceGroup));
+            }
         }
     }
 }
