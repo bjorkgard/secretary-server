@@ -51,7 +51,7 @@
   "page.reports.description3": "Du kan skicka en påminnelse eller ett nytt rapportformulär till förkunnaren genom att klicka på plan-ikonen.",
   "page.reports.emailNotSent": "Det gick inte att skicka e-postmeddelandet",
   "page.reports.emailSent": "E-postmeddelandet kommer att skickas inom kort",
-  "page.reports.form.description": "Fyll i rapporten och klicka på Spara.",
+  "page.reports.form.description": "Fyll i rapporten och klicka på Spara. Om förkunnaren är i någon form av heltidstjänst (t.ex. Hjälppionjär eller Reguljärpionjär) behöver du först klicka i om förkunnaren har deltagit i någon form av tjänst, därefter kan du fylla i antal hela timmar förkunnaren varit i tjänst.",
   "page.reports.form.headline": "Tjänsterapport",
   "page.reports.form.publisherDescription": "Fyll i om du deltagit i tjänsten och antal olika bibelstudier som hållits under månaden. Förkunnare som är i någon form av pionjärtjänst fyller även i antal hela timmar de har varit i tjänsten.",
   "page.reports.form.successfull": "Tack! Din rapport har blivit sparad.",
