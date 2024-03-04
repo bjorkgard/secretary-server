@@ -26,7 +26,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
     "husky": "^8.0.3",
-    "laravel-vite-plugin": "^1.0.1",
+    "laravel-vite-plugin": "^1.0.2",
     "lint-staged": "^15.2.2",
     "postcss": "^8.4.35",
     "simple-git-hooks": "^2.9.0",
