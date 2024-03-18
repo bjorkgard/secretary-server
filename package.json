@@ -31,7 +31,7 @@
     "postcss": "^8.4.35",
     "simple-git-hooks": "^2.10.0",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.1.5",
+    "vite": "^5.1.6",
     "vue": "^3.4.21"
   }
 }
