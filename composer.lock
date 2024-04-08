@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ea33c9e02891dc938285733283da490",
+    "content-hash": "749b6ccc2d4c72444430380a5cb1f9f9",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2423,16 +2423,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.4.9",
+            "version": "v3.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "c65b3f0798ab2c9338213ede3588c3cdf4e6fcc0"
+                "reference": "6f90e2d7f8e80a97a7406c22a0fbc61ca1256ed9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/c65b3f0798ab2c9338213ede3588c3cdf4e6fcc0",
-                "reference": "c65b3f0798ab2c9338213ede3588c3cdf4e6fcc0",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/6f90e2d7f8e80a97a7406c22a0fbc61ca1256ed9",
+                "reference": "6f90e2d7f8e80a97a7406c22a0fbc61ca1256ed9",
                 "shasum": ""
             },
             "require": {
@@ -2442,6 +2442,7 @@
                 "illuminate/validation": "^10.0|^11.0",
                 "league/mime-type-detection": "^1.9",
                 "php": "^8.1",
+                "symfony/console": "^6.0|^7.0",
                 "symfony/http-kernel": "^6.2|^7.0"
             },
             "require-dev": {
@@ -2449,8 +2450,8 @@
                 "laravel/framework": "^10.0|^11.0",
                 "laravel/prompts": "^0.1.6",
                 "mockery/mockery": "^1.3.1",
-                "orchestra/testbench": "8.20.0|^9.0",
-                "orchestra/testbench-dusk": "8.20.0|^9.0",
+                "orchestra/testbench": "^8.21.0|^9.0",
+                "orchestra/testbench-dusk": "^8.24|^9.1",
                 "phpunit/phpunit": "^10.4",
                 "psy/psysh": "^0.11.22|^0.12"
             },
@@ -2486,7 +2487,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.4.9"
+                "source": "https://github.com/livewire/livewire/tree/v3.4.10"
             },
             "funding": [
                 {
@@ -2494,20 +2495,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-14T14:03:32+00:00"
+            "time": "2024-04-02T14:22:50+00:00"
         },
         {
             "name": "maantje/pulse-database",
-            "version": "v0.1.0",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maantje/pulse-database.git",
-                "reference": "ec5408a4357923294412d3d12dd86951e19ec60f"
+                "reference": "b5b29c334c7a2883ff6404ca5122ab50a6a24128"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maantje/pulse-database/zipball/ec5408a4357923294412d3d12dd86951e19ec60f",
-                "reference": "ec5408a4357923294412d3d12dd86951e19ec60f",
+                "url": "https://api.github.com/repos/maantje/pulse-database/zipball/b5b29c334c7a2883ff6404ca5122ab50a6a24128",
+                "reference": "b5b29c334c7a2883ff6404ca5122ab50a6a24128",
                 "shasum": ""
             },
             "require": {
@@ -2544,11 +2545,16 @@
                 }
             ],
             "description": "A Laravel Pulse card for database status",
+            "keywords": [
+                "database",
+                "database-status",
+                "laravel"
+            ],
             "support": {
                 "issues": "https://github.com/maantje/pulse-database/issues",
-                "source": "https://github.com/maantje/pulse-database/tree/v0.1.0"
+                "source": "https://github.com/maantje/pulse-database/tree/v0.2.0"
             },
-            "time": "2023-12-10T21:55:46+00:00"
+            "time": "2024-04-03T19:12:08+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
