@@ -22,7 +22,7 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
-    "daisyui": "^4.10.2",
+    "daisyui": "^4.10.5",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.24.0",
     "husky": "^8.0.3",
