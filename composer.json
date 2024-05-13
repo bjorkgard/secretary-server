@@ -11,7 +11,7 @@
     "laravel/framework": "^10.10",
     "laravel/horizon": "^5.21",
     "laravel/jetstream": "^4.1",
-    "laravel/pulse": "^1.0@beta",
+    "laravel/pulse": "^1.1",
     "laravel/sanctum": "^3.3",
     "laravel/tinker": "^2.8",
     "maantje/pulse-database": "^0.2.0",
