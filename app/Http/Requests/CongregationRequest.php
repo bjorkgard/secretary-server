@@ -28,6 +28,7 @@ class CongregationRequest extends FormRequest
             'contact_firstname' => 'required',
             'contact_lastname' => 'required',
             'contact_email' => 'required|email',
+            'public' => 'required|boolean',
             'send_service_group_reports' => 'required|boolean',
             'send_publisher_reports' => 'required|boolean',
         ];
