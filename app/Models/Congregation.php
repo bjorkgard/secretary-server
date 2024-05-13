@@ -21,6 +21,7 @@ class Congregation extends Model
         'contact_firstname',
         'contact_lastname',
         'contact_email',
+        'public',
         'send_service_group_reports',
         'send_publisher_reports',
     ];
@@ -33,5 +34,6 @@ class Congregation extends Model
     protected $casts = [
         'send_service_group_reports' => 'boolean',
         'send_publisher_reports' => 'boolean',
+        'public' => 'boolean',
     ];
 }
