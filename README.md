@@ -1,3 +1,4 @@
+[![Crowdin](https://badges.crowdin.net/secretary-server/localized.svg)](https://crowdin.com/project/secretary-server)
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 ## Secretary – Backend
