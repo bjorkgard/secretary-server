@@ -14,6 +14,15 @@ class CongregationController extends Controller
         $this->congregation = $congregation;
     }
 
+    public function getPublic()
+    {
+        $congregations = $this->congregation->select('identifier', 'congregation', 'congregation_number')->where('public', true)->orderBy('congregation')->get();
+
+        return response()->json([
+            'data' => $congregations,
+        ], 200);
+    }
+
     public function upsert(CongregationRequest $request)
     {
         try {
