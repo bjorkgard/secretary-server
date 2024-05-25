@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\CongregationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceGroupController;
@@ -20,8 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/register', [UserController::class, 'upsert'])->name('upsert.user');
 
+    Route::post('/communication', [CommunicationController::class, 'create'])->name('create.communication');
+    Route::delete('/communication/{id}', [CommunicationController::class, 'delete'])->name('delete.communication');
+    Route::get('/communications/{identifier}', [CommunicationController::class, 'getCommunications'])->name('get.communications');
+
     Route::post('/congregation', [CongregationController::class, 'upsert'])->name('upsert.congregation');
     Route::delete('/congregation/{identifier}', [CongregationController::class, 'delete'])->name('delete.congregation');
+    Route::get('/congregations/public', [CongregationController::class, 'getPublic'])->name('get.public.congregations');
 
     Route::post('/report', [ServiceGroupController::class, 'start'])->name('report.start');
     Route::post('/delete_report', [ServiceGroupController::class, 'close'])->name('report.close');
