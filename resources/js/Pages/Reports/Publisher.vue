@@ -27,7 +27,7 @@ function showSuccessToast() {
 }
 
 function saveReport() {
-  form.put(route('report.update.publisher', { id: form.id }), {
+  form.put(route('report-update-publisher', { id: form.id }), {
     preserveScroll: true,
     onSuccess:      () => showSuccessToast(),
   })

@@ -22,7 +22,7 @@ const form = useForm({
 })
 
 function saveReport() {
-  form.put(route('report.update', { id: form.id }), {
+  form.put(route('report-update', { id: form.id }), {
     preserveScroll: true,
     onSuccess:      () => closeModal(),
   })

@@ -28,7 +28,7 @@ function showToastMessage(message) {
 }
 
 function sendEmail(id) {
-  form.put(route('report.send-email', id), {
+  form.put(route('report-send-email', id), {
     preserveScroll: true,
     onSuccess:      () => {
       showToastMessage('page.reports.emailSent')
