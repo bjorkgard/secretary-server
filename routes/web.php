@@ -33,9 +33,9 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::put('/report/{report}', [ReportController::class, 'update'])->name('report.update');
-Route::put('/report/publisher/{report}', [ReportController::class, 'updatePublisher'])->name('report.update.publisher');
-Route::put('/report/send-email/{report}', [ReportController::class, 'sendEmail'])->name('report.send-email');
+Route::put('/report/{report}', [ReportController::class, 'update'])->name('report-update');
+Route::put('/report/publisher/{report}', [ReportController::class, 'updatePublisher'])->name('report-update-publisher');
+Route::put('/report/send-email/{report}', [ReportController::class, 'sendEmail'])->name('report-send-email');
 
 Route::middleware(['signed', 'locale'])->group(function () {
     Route::get('/service-group-reports/{locale}/{serviceGroup}', [ServiceGroupReportController::class, 'show'])->name('service-group-reports');
