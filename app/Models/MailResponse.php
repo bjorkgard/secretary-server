@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Communication extends Model
+class MailResponse extends Model
 {
     use HasFactory;
     use Prunable;
@@ -22,27 +22,29 @@ class Communication extends Model
      */
     protected $fillable = [
         'identifier',
-        'type',
+        'publisher_email',
+        'description',
+        'event',
+        'description',
         'data',
+        'fix',
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array
      */
-    protected function casts(): array
-    {
-        return [
-            'data' => AsArrayObject::class,
-        ];
-    }
+    protected $casts = [
+        'fix' => 'boolean',
+        'data' => AsArrayObject::class,
+    ];
 
-     /**
-     * Get the prunable model query.
-     */
-    public function prunable(): Builder
-    {
-        return static::where('deleted_at', '<=', now()->subMonth());
-    }
+    /**
+    * Get the prunable model query.
+    */
+   public function prunable(): Builder
+   {
+       return static::where('deleted_at', '<=', now()->subMonth());
+   }
 }
