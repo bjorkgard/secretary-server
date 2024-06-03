@@ -6,7 +6,9 @@ import Banner from '@/Components/Banner.vue'
 import Dropdown from '@/Components/Dropdown.vue'
 import DropdownLink from '@/Components/DropdownLink.vue'
 import NavLink from '@/Components/NavLink.vue'
+import NavLinkExternal from '@/Components/NavLinkExternal.vue'
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue'
+import ResponsiveNavLinkExternal from '@/Components/ResponsiveNavLinkExternal.vue'
 
 defineProps({
   title: String,
@@ -51,6 +53,12 @@ function logout() {
                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                   Dashboard
                 </NavLink>
+                <NavLinkExternal v-if="$page.props.auth.user.email === 'nathanael@bjorkgard.se'" href="/pulse">
+                  Pulse
+                </NavLinkExternal>
+                <NavLinkExternal v-if="$page.props.auth.user.email === 'nathanael@bjorkgard.se'" href="/horizon">
+                  Horizon
+                </NavLinkExternal>
               </div>
             </div>
 
@@ -194,6 +202,13 @@ function logout() {
             <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
               Dashboard
             </ResponsiveNavLink>
+
+            <ResponsiveNavLinkExternal v-if="$page.props.auth.user.email === 'nathanael@bjorkgard.se'" href="/pulse">
+              Pulse
+            </ResponsiveNavLinkExternal>
+            <ResponsiveNavLinkExternal v-if="$page.props.auth.user.email === 'nathanael@bjorkgard.se'" href="/horizon">
+              Horizon
+            </ResponsiveNavLinkExternal>
           </div>
 
           <!-- Responsive Settings Options -->
