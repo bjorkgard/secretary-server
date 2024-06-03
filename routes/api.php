@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\CongregationController;
+use App\Http\Controllers\MailResponseController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceGroupController;
 use App\Http\Controllers\UserController;
@@ -35,4 +36,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/reports/update', [ReportController::class, 'updateReport'])->name('report.update');
     Route::post('/reports/reset-updated', [ReportController::class, 'resetUpdated'])->name('report.reset-updated');
     Route::get('/reports/{identifier}', [ReportController::class, 'getUpdates'])->name('report.get-updates');
+
+    Route::put('/mailResponse/{id}', [MailResponseController::class, 'fixWarning'])->name('mailresponse.fix-warning');
 });

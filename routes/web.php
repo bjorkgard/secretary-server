@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MailResponseController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceGroupReportController;
 use Illuminate\Foundation\Application;
@@ -32,6 +33,14 @@ Route::middleware([
         return Inertia::render('DashboardPage');
     })->name('dashboard');
 });
+
+/*
+ * Webhooks for Mailgun
+*/
+Route::post('mailgun/complained', [MailResponseController::class, 'complained'])->name('mailgun.complained');
+Route::post('mailgun/unsubscribed', [MailResponseController::class, 'unsubscribed'])->name('mailgun.unsubscribed');
+Route::post('mailgun/fail', [MailResponseController::class, 'fail'])->name('mailgun.fail');
+
 
 Route::put('/report/{report}', [ReportController::class, 'update'])->name('report-update');
 Route::put('/report/publisher/{report}', [ReportController::class, 'updatePublisher'])->name('report-update-publisher');

@@ -76,5 +76,6 @@
   "report.close_failed": "Det gick inte att radera rapporterna från servern",
   "report.closed_successfully": "Alla månadsrapporter har raderats från servern",
   "report.started_failed": "Månadsrapporten kunde inte skapas",
-  "report.started_successfully": "Månadsrapporten skapades"
+  "report.started_successfully": "Månadsrapporten skapades",
+  "mailresponse.fix_warning": "Varningen för e-postadressen kommer att kontrolleras inom kort"
 }
