@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\MailResponse;
 use App\Models\Report;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class MailResponseController extends Controller
 {
     public function complained(Request $request)
     {
         $event = $request->input('event-data');
-        Log::info('complained', json_encode($event));
 
         $report = Report::where('publisher_email', $event['recipient'])->first();
 
@@ -31,7 +29,6 @@ class MailResponseController extends Controller
     public function unsubscribed(Request $request)
     {
         $event = $request->input('event-data');
-        Log::info('unsubscribed', json_encode($event));
 
         $report = Report::where('publisher_email', $event['recipient'])->first();
 
@@ -50,7 +47,6 @@ class MailResponseController extends Controller
     public function fail(Request $request)
     {
         $event = $request->input('event-data');
-        Log::info('fail', json_encode($event));
 
         $report = Report::where('publisher_email', $event['recipient'])->first();
 
