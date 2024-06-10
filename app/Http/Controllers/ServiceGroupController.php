@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ServiceGroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ServiceGroupController extends Controller
 {
@@ -114,6 +115,24 @@ class ServiceGroupController extends Controller
         }
 
         return $filteredReports;
+    }
+
+    public function resendServiceGroupForm($identifier){
+        Log::info($identifier);
+        $serviceGroup = ServiceGroup::where('service_group_identifier', $identifier)->first();
+
+        if($serviceGroup){
+            $serviceGroup->email_status = self::EMAIL_STATUS_WAITING;
+            $serviceGroup->save();
+
+            return response()->json([
+                'message' => __('report.resend_service_group_form'),
+            ], 201);
+        }
+
+        return response()->json([
+            'message' => __('report.resend_service_group_form_failed'),
+        ], 500);
     }
 
     private function findPublisherById($array, $id)
