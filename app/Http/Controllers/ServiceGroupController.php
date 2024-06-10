@@ -118,7 +118,6 @@ class ServiceGroupController extends Controller
     }
 
     public function resendServiceGroupForm($identifier){
-        Log::info($identifier);
         $serviceGroup = ServiceGroup::where('service_group_identifier', $identifier)->first();
 
         if($serviceGroup){

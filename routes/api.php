@@ -35,6 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/send_reports', [ReportController::class, 'send_reports'])->name('report.send');
     Route::put('/reports/update', [ReportController::class, 'updateReport'])->name('report.update');
     Route::post('/reports/reset-updated', [ReportController::class, 'resetUpdated'])->name('report.reset-updated');
+    Route::put('/reports/resend/{identifier}', [ReportController::class, 'resend'])->name('report.resend');
     Route::get('/reports/{identifier}', [ReportController::class, 'getUpdates'])->name('report.get-updates');
 
     Route::put('/serviceGroups/resend/{identifier}', [ServiceGroupController::class, 'resendServiceGroupForm'])->name('servicegroup.resend');
