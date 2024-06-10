@@ -37,5 +37,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/reports/reset-updated', [ReportController::class, 'resetUpdated'])->name('report.reset-updated');
     Route::get('/reports/{identifier}', [ReportController::class, 'getUpdates'])->name('report.get-updates');
 
+    Route::put('/serviceGroups/resend/{identifier}', [ServiceGroupController::class, 'resendServiceGroupForm'])->name('servicegroup.resend');
+
     Route::put('/mailResponse/{id}', [MailResponseController::class, 'fixWarning'])->name('mailresponse.fix-warning');
 });
