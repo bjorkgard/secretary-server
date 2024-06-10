@@ -12,6 +12,9 @@ use Inertia\Inertia;
 
 class ReportController extends Controller
 {
+    const EMAIL_STATUS_WAITING = 'WAITING';
+    const EMAIL_STATUS_NONE = 'NONE';
+
     public function update(ReportRequest $request, Report $report)
     {
         $report->update([
@@ -88,6 +91,24 @@ class ReportController extends Controller
         ], 201);
     }
 
+    public function resend(string $identifier)
+    {
+        $report = Report::where('identifier', $identifier)->first();
+
+        if($report){
+            $report->email_status = self::EMAIL_STATUS_WAITING;
+            $report->save();
+
+            return response()->json([
+                'message' => __('report.resend_publisher_report'),
+            ], 201);
+        }
+
+        return response()->json([
+            'message' => __('report.resend_publisher_report_failed'),
+        ], 500);
+    }
+
     public function resetUpdated(Request $request)
     {
         Report::whereIn('id', $request->get('ids'))->update(['has_been_updated' => false]);
@@ -95,6 +116,6 @@ class ReportController extends Controller
 
     public function sendEmail(Report $report)
     {
-        $report->update(['email_status' => 'WAITING']);
+        $report->update(['email_status' => self::EMAIL_STATUS_WAITING]);
     }
 }
