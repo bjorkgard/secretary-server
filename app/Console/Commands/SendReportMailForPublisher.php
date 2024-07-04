@@ -27,7 +27,7 @@ class SendReportMailForPublisher extends Command
      */
     public function handle()
     {
-        $reports = Report::where('email_status', 'WAITING')->get();
+        $reports = Report::where('email_status', 'WAITING')->with('serviceGroup')->get();
 
         foreach ($reports as $report) {
             event(new PublisherReportEvent($report));
