@@ -8,6 +8,7 @@ use App\Models\Report;
 use App\Models\ServiceGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 
 class ReportController extends Controller
@@ -117,5 +118,25 @@ class ReportController extends Controller
     public function sendEmail(Report $report)
     {
         $report->update(['email_status' => self::EMAIL_STATUS_WAITING]);
+    }
+
+    public function getReportUrl(string $identifier){
+        $report = Report::where('identifier', $identifier)->first();
+
+        if($report){
+            $url = URL::temporarySignedRoute(
+                'publisher-report',
+                now()->addDays(20),
+                ['locale' => $report->locale, 'report' => $report->identifier]
+            );
+
+            return response()->json([
+                'url' => $url,
+            ], 201);
+        }
+
+        return response()->json([
+            'message' => __('report.no_report_found'),
+        ], 500);
     }
 }

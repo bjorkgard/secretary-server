@@ -6,6 +6,7 @@ use App\Models\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -32,6 +33,9 @@ class PublisherReport extends Mailable implements ShouldQueue
             subject: __('emails.reports.publisherSubject', ['month' => __('month.' . $this->report->name)]),
             tags: ['report', 'publisher'],
             metadata: ['service_group_identifier' => $this->report->identifier],
+            replyTo: [
+                new Address($this->report->serviceGroup->responsible_email)
+            ]
         );
     }
 
