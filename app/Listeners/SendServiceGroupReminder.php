@@ -27,14 +27,22 @@ class SendServiceGroupReminder
 
         if($event->serviceGroup->responsible_email || $event->serviceGroup->assistant_email){
             $to = [];
-            if($event->serviceGroup->responsible_email){
-                $to[] = ['email' => $event->serviceGroup->responsible_email];
-            }
-            if($event->serviceGroup->assistant_email){
-                $to[] = ['email' => $event->serviceGroup->assistant_email];
+
+            if($event->serviceGroup->receivers === 'RESPONSIBLE' || $event->serviceGroup->receivers === 'BOTH'){
+                if($event->serviceGroup->responsible_email){
+                    $to[] = ['email' => $event->serviceGroup->responsible_email];
+                }
             }
 
-            Mail::to($to)->locale($event->serviceGroup->locale)->queue($message);
+            if($event->serviceGroup->receivers === 'ASSISTANT' || $event->serviceGroup->receivers === 'BOTH'){
+                if($event->serviceGroup->assistant_email){
+                    $to[] = ['email' => $event->serviceGroup->assistant_email];
+                }
+            }
+
+            if(count($to) > 0){
+                Mail::to($to)->locale($event->serviceGroup->locale)->queue($message);
+            }
         }
     }
 }

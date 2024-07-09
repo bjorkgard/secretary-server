@@ -24,6 +24,7 @@ class ServiceGroup extends Model
         'email_status',
         'locale',
         'month',
+        'receivers'
     ];
 
     /**

@@ -69,6 +69,7 @@ class ServiceGroupController extends Controller
                     'name' => $serviceGroup['name'],
                     'responsible_email' => $responsible ? $responsible['email'] : null,
                     'assistant_email' => $assistant ? $assistant['email'] : null,
+                    'receivers' => $serviceGroup['receivers'],
                     'email_status' => isset($responsible['email']) || isset($assistant['email']) ? self::EMAIL_STATUS_WAITING : self::EMAIL_STATUS_NONE,
                 ]);
 

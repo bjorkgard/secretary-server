@@ -23,8 +23,10 @@ class SendServiceGroupReportAssistant
     {
         $message = (new ServiceGroupReports($event->serviceGroup))->onQueue('emails');
 
-        if ($event->serviceGroup->assistant_email) {
-            Mail::to($event->serviceGroup->assistant_email)->locale($event->serviceGroup->locale)->queue($message);
+        if($event->serviceGroup->receivers === 'ASSISTANT' || $event->serviceGroup->receivers === 'BOTH'){
+            if ($event->serviceGroup->assistant_email) {
+                Mail::to($event->serviceGroup->assistant_email)->locale($event->serviceGroup->locale)->queue($message);
+            }
         }
     }
 }
