@@ -31,14 +31,22 @@ class SendReportResponse
             $message = (new ReportResponse($report))->onQueue('emails');
 
             $to = [];
-            if($report->serviceGroup->responsible_email){
-                $to[] = ['email' => $report->serviceGroup->responsible_email];
-            }
-            if($report->serviceGroup->assistant_email){
-                $to[] = ['email' => $report->serviceGroup->assistant_email];
+
+            if($report->serviceGroup->receivers === 'RESPONSIBLE' || $report->serviceGroup->receivers === 'BOTH'){
+                if($report->serviceGroup->responsible_email){
+                    $to[] = ['email' => $report->serviceGroup->responsible_email];
+                }
             }
 
-            Mail::to($to)->locale($report->locale)->queue($message);
+            if($report->serviceGroup->receivers === 'ASSISTANT' || $report->serviceGroup->receivers === 'BOTH'){
+                if($report->serviceGroup->assistant_email){
+                    $to[] = ['email' => $report->serviceGroup->assistant_email];
+                }
+            }
+
+            if(count($to) > 0){
+                Mail::to($to)->locale($report->locale)->queue($message);
+            }
         }
     }
 }
