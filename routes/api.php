@@ -41,5 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::put('/serviceGroups/resend/{identifier}', [ServiceGroupController::class, 'resendServiceGroupForm'])->name('servicegroup.resend');
 
-    Route::put('/mailResponse/{id}', [MailResponseController::class, 'fixWarning'])->name('mailresponse.fix-warning');
+    Route::put('/mailResponse', [MailResponseController::class, 'fixWarning'])->name('mailresponse.fix-warning');
+    Route::get('/mailResponse/{identifier}', [MailResponseController::class, 'getWarnings'])->name('mailresponse.get-warnings');
+    Route::delete('/mailResponse', [MailResponseController::class, 'deleteWarning'])->name('mailresponse.delete-warnings');
 });
