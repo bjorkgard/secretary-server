@@ -81,11 +81,14 @@ class ReportController extends Controller
 
     public function getUpdates(string $identifier)
     {
+        Log::info('getUpdates', ['identifier' => $identifier]);
         $serviceGroupIds = ServiceGroup::where('identifier', $identifier)->pluck('id');
 
         $reports = Report::whereIn('service_group_id', $serviceGroupIds)
             ->where('has_been_updated', true)
             ->get();
+
+        Log::info('getUpdates', ['reports' => $reports]);
 
         return response()->json([
             'data' => $reports,
