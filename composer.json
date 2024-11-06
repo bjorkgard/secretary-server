@@ -15,7 +15,7 @@
     "laravel/sanctum": "^3.3",
     "laravel/tinker": "^2.8",
     "maantje/pulse-database": "^0.2.0",
-    "symfony/http-client": "^6.3",
+    "symfony/http-client": "^7.1",
     "symfony/mailgun-mailer": "^6.3",
     "tightenco/ziggy": "^1.0"
   },
