@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\CongregationController;
+use App\Http\Controllers\InformationController;
 use App\Http\Controllers\MailResponseController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceGroupController;
@@ -44,4 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/mailResponse', [MailResponseController::class, 'fixWarning'])->name('mailresponse.fix-warning');
     Route::get('/mailResponse/{identifier}', [MailResponseController::class, 'getWarnings'])->name('mailresponse.get-warnings');
     Route::delete('/mailResponse', [MailResponseController::class, 'deleteWarning'])->name('mailresponse.delete-warnings');
+
+    Route::get('/information/{identifier}', [InformationController::class, 'getInformations'])->name('information.get-messages');
+    Route::delete('/information', [InformationController::class, 'deleteInformation'])->name('information.delete-message');
 });
