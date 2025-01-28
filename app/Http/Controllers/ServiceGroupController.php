@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Report;
 use App\Models\ServiceGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -28,6 +29,81 @@ class ServiceGroupController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'message' => __('report.close_failed'),
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function forceUpdate(Request $request){
+        try {
+            $validatedData = $request->validate([
+                'identifier' => 'required',
+                'locale' => 'required',
+                'publishers' => 'array',
+                'serviceGroups' => 'required|array',
+                'serviceMonth' => 'required|array',
+            ]);
+
+            $identifier = $validatedData['identifier'];
+            $locale = $validatedData['locale'];
+            $publishers = $validatedData['publishers'];
+            $serviceGroups = $validatedData['serviceGroups'];
+            $serviceMonth = $validatedData['serviceMonth'];
+
+            foreach ($serviceGroups as $serviceGroup) {
+                $responsible = null;
+                $assistant = null;
+
+                if (isset($serviceGroup['responsibleId'])) {
+                    $responsible = $this->findPublisherById($publishers, $serviceGroup['responsibleId']);
+                }
+                if (isset($serviceGroup['assistantId'])) {
+                    $assistant = $this->findPublisherById($publishers, $serviceGroup['assistantId']);
+                }
+
+                $SG = ServiceGroup::updateOrCreate([
+                    'service_group_identifier' => $serviceGroup['_id'],
+                    'identifier' => $identifier,
+                    'month' => $serviceMonth['name'],
+                    'name' => $serviceGroup['name'],
+                ], [
+                    'locale' => $locale,
+                    'responsible_email' => $responsible ? $responsible['email'] : null,
+                    'assistant_email' => $assistant ? $assistant['email'] : null,
+                    'receivers' => $serviceGroup['receivers'],
+                    'email_status' => isset($responsible['email']) || isset($assistant['email']) ? self::EMAIL_STATUS_WAITING : self::EMAIL_STATUS_NONE,
+                ]);
+
+                foreach ($serviceMonth['reports'] as $report) {
+                    if($serviceGroup['_id'] == $report['publisherServiceGroupId']){
+
+                        Report::updateOrCreate([
+                                'identifier' => $report['identifier'],
+                            ], [
+                                'service_group_id' => $SG->id,
+                                'type' => $report['type'],
+                                'name' => $report['name'],
+                                'has_been_in_service' => $report['hasBeenInService'],
+                                'has_not_been_in_service' => $report['hasNotBeenInService'],
+                                'studies' => isset($report['studies']) ? $report['studies'] : null,
+                                'auxiliary' => $report['auxiliary'],
+                                'hours' => isset($report['hours']) ? $report['hours'] : null,
+                                'remarks' => isset($report['remarks']) ? $report['remarks'] : null,
+                                'publisher_status' => $report['publisherStatus'],
+                                'publisher_name' => $report['publisherName'],
+                                'publisher_email' => $report['publisherEmail'],
+                                'locale' => $locale,
+                                'email_status' => self::EMAIL_STATUS_NONE,
+                                'send_email' => $report['publisherSendEmail'],
+                            ]);
+                    }
+                }
+            }
+
+
+        }catch (\Exception $e) {
+            return response()->json([
+                'message' => __('report.force_update_failed'),
                 'error' => $e->getMessage(),
             ], 500);
         }
