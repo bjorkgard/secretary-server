@@ -16,6 +16,7 @@ class Report extends Model
      * @var array
      */
     protected $fillable = [
+        'service_group_id',
         'service_group_identifier',
         'identifier',
         'type',
