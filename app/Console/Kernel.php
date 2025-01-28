@@ -16,6 +16,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command('model:prune')->daily();
 
+        $schedule->command('backup:clean')->daily()->at('01:00');
+        $schedule->command('backup:run --only-db')->daily()->at('01:30');
+
         $schedule->command('secretary:send-report-mail-for-service-group')->everyTenMinutes()->thenPing('http://beats.envoyer.io/heartbeat/TETDSUJhD628m9h');
         $schedule->command('secretary:send-report-mail-for-publisher')->everyFiveMinutes();
 
