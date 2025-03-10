@@ -20,12 +20,12 @@ class DonationController extends Controller
         $hasPrevious = DB::table('donations')->whereYear('date', intval($year) - 1)->exists();
         $hasNext = DB::table('donations')->whereYear('date', intval($year) + 1)->exists();
 
-        return response()->json([
+        return Inertia::render('Donations/Show', [
             'donations' => $donations,
             'currentYear' => $year,
             'hasNext' => $hasNext,
             'hasPrevious' => $hasPrevious
-        ], 200);
+        ]);
     }
 
     public function getDonations($year = null)
@@ -38,12 +38,12 @@ class DonationController extends Controller
         $hasPrevious = DB::table('donations')->whereYear('date', intval($year) - 1)->exists();
         $hasNext = DB::table('donations')->whereYear('date', intval($year) + 1)->exists();
 
-        return Inertia::render('Donations/Show', [
+        return response()->json([
             'donations' => $donations,
             'currentYear' => $year,
             'hasNext' => $hasNext,
             'hasPrevious' => $hasPrevious
-        ]);
+        ], 200);
     }
 
     public function create()
