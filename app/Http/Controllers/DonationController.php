@@ -16,7 +16,7 @@ class DonationController extends Controller
             $year = date('Y');
         }
 
-        $donations = DB::table('donations')->whereYear('date', $year)->orderBy('date', 'asc')->get();
+        $donations = DB::table('donations')->whereYear('date', $year)->orderBy('date', 'desc')->get();
         $hasPrevious = DB::table('donations')->whereYear('date', intval($year) - 1)->exists();
         $hasNext = DB::table('donations')->whereYear('date', intval($year) + 1)->exists();
 
@@ -34,7 +34,7 @@ class DonationController extends Controller
             $year = date('Y');
         }
 
-        $donations = DB::table('donations')->whereYear('date', $year)->orderBy('date', 'asc')->get();
+        $donations = DB::table('donations')->whereYear('date', $year)->orderBy('date', 'desc')->get();
         $hasPrevious = DB::table('donations')->whereYear('date', intval($year) - 1)->exists();
         $hasNext = DB::table('donations')->whereYear('date', intval($year) + 1)->exists();
 
