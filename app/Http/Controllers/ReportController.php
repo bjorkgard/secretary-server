@@ -95,6 +95,17 @@ class ReportController extends Controller
         ], 201);
     }
 
+    public function getAllReports(string $identifier)
+    {
+        $serviceGroupIds = ServiceGroup::where('identifier', $identifier)->pluck('id');
+
+        $reports = Report::whereIn('service_group_id', $serviceGroupIds)->get();
+
+        return response()->json([
+            'data' => $reports,
+        ], 201);
+    }
+
     public function resend(string $identifier)
     {
         $report = Report::where('identifier', $identifier)->first();

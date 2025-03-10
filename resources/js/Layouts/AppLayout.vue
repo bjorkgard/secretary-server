@@ -53,6 +53,9 @@ function logout() {
                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                   Dashboard
                 </NavLink>
+                <NavLinkExternal :href="route('donations')" :active="route().current('donations')">
+                  Donationer/Kostnader
+                </NavLinkExternal>
                 <NavLinkExternal v-if="$page.props.auth.user.email === 'nathanael@bjorkgard.se'" href="/pulse">
                   Pulse
                 </NavLinkExternal>

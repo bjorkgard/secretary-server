@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\MailResponseController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceGroupReportController;
@@ -32,6 +33,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('DashboardPage');
     })->name('dashboard');
+
+    Route::get('/donations/{year?}', [DonationController::class, 'index'])->name('donations');
+    Route::get('/donation/create', [DonationController::class, 'create'])->name('donation.create');
+    Route::post('/donation/store', [DonationController::class, 'store'])->name('donation.store');
+    Route::delete('/donation/{donation}', [DonationController::class, 'destroy'])->name('donation.destroy');
 });
 
 /*
