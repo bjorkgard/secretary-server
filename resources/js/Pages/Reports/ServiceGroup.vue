@@ -106,15 +106,15 @@ function onCloseModal() {
             <tr v-for="report in serviceGroup.reports" :key="report.id" :class="{ 'bg-blue-200 dark:bg-sky-800': report.publisher_status === 'INACTIVE' }" class="cursor-pointer dark:border-b dark:border-sky-900" @click="showReportDialog(report.id)">
               <th class="flex justify-between" :class="{ 'text-blue-500 bg-blue-100 dark:bg-sky-900 dark:text-sky-100': report.publisher_status === 'INACTIVE' }">
                 <div class="flex">
-                  <div v-if="congregation.send_publisher_reports" class="tooltip tooltip-right" :data-tip="__('page.reports.hasSendEmail')">
-                    <EnvelopeIcon v-if="report.send_email" class="h-5 w-5 text-blue-500 mr-2" @click.stop.prevent="sendEmail(report.id)" />
+                  <div v-if="congregation.send_publisher_reports && report.publisher_email && report.send_email" class="tooltip tooltip-right" :data-tip="__('page.reports.hasSendEmail')">
+                    <EnvelopeIcon class="h-5 w-5 text-blue-500 mr-2" @click.stop.prevent="sendEmail(report.id)" />
                   </div>
                   <span>
                     {{ report.publisher_name }}
                     <div v-if="report.name !== serviceGroup.month" class="text-xs italic -mt-3"><br>{{ __(`month.${report.name}`) }}</div>
                   </span>
                 </div>
-                <div v-if="congregation.send_publisher_reports" class="tooltip tooltip-right" :data-tip="__('page.reports.sendEmail')">
+                <div v-if="congregation.send_publisher_reports && report.publisher_email" class="tooltip tooltip-right" :data-tip="__('page.reports.sendEmail')">
                   <PaperAirplaneIcon v-if="report.publisher_email && report.publisher_status !== 'INACTIVE'" class="h-5 w-5 text-blue-500" @click.stop.prevent="sendEmail(report.id)" />
                 </div>
               </th>
