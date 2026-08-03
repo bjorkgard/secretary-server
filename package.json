@@ -21,7 +21,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@vitejs/plugin-vue": "^6.0.8",
     "autoprefixer": "^10.5.4",
-    "axios": "^1.18.1",
+    "axios": "^1.19.0",
     "daisyui": "^4.12.23",
     "eslint": "^10.8.0",
     "eslint-plugin-vue": "^10.10.0",
